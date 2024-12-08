@@ -45,7 +45,7 @@ int array_similarity(int64_t number, int64_t *array2, int arrMax){
     int similarity_multiplier = 0;
     for(int i = 0 ; i < arrMax ; i++){
         if (array2[i] == number){
-            similarity_score++;
+            similarity_multiplier++;
         }
     }
     return similarity_multiplier;
@@ -115,9 +115,11 @@ int main(){
     
     for(i = 0 ; i < arrMax; i++){
         if(temp != array1[i]){
-            mult = array_similarity(array1[i]);
+            mult = array_similarity(array1[i], array2, arrMax);
         }
         temp = array1[i];
+        array1[i] = array1[i]*mult;
+        total+=array1[i];
     }
     printf("%li\n",total);
 
